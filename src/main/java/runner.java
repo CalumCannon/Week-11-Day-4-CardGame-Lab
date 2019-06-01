@@ -14,10 +14,13 @@ public class runner {
         players.add(player);
         players.add(dealer);
 
+        deck.shuffle();
+
         Game game = new Game(players, deck);
 
         System.out.println("Press enter to deal cards");
         Scanner scanner = new Scanner(System.in);
+
         game.dealCards();
 
         playerLoop(game);
@@ -36,13 +39,13 @@ public class runner {
             System.out.println(card.getRank() + " " + card.getSuit());
         }
 
+        String handValueMessage = "Hand value is "  + game.getPlayer().getHandValue();
+        System.out.println(handValueMessage);
+
         if(game.getPlayer().isBust()){
             System.out.println("Bust");
             return;
         }
-
-        String handValueMessage = "Hand value is "  + game.getPlayer().getHandValue();
-        System.out.println(handValueMessage);
 
         System.out.println("Would you like to twist or stick?");
 
@@ -61,8 +64,6 @@ public class runner {
         } else {
             playerLoop(game);
         }
-
-        System.out.println("You decided to " + stickOrTwist);
     }
 
     public static void dealerLoop(Game game){
@@ -85,16 +86,19 @@ public class runner {
         if(game.getDealer().getHandValue() < 16){
             //TWIST
             //deal card
-            game.dealCardToPlayer();
+            game.dealCardToDealer();
             //loop again
             dealerLoop(game);
 
         }
 
-
     }
 
     public static void compareHands(Game game){
-        game.pickWinner();
+       if(game.pickWinner() == game.getPlayer()){
+           System.out.println("You won, well done");
+       }else{
+           System.out.println("Dealer won, you're shite");
+       }
     }
 }

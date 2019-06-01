@@ -54,4 +54,7 @@ public class Game {
         players.get(0).addCardToHand(deck.dealOne());
     }
 
+    public void dealCardToDealer() {
+        players.get(1).addCardToHand(deck.dealOne());
+    }
 }

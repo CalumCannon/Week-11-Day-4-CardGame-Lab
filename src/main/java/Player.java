@@ -30,6 +30,13 @@ public class Player {
           handValue += card.getValue();
         }
 
+        if(handValue  > 21){
+            if(returnHand().contains(Rank.ACE)){
+                System.out.println("Ace value is counting as 1");
+                handValue -= 10;
+            }
+        }
+
         return handValue;
     }
 
