@@ -19,4 +19,27 @@ public class Player {
     public int returnCardRank(){
         return hand.get(0).getRank().getValue();
     }
+
+    public ArrayList<Card> returnHand(){
+        return hand;
+    }
+
+    public int getHandValue(){
+        int handValue = 0;
+        for(Card card : hand){
+          handValue += card.getValue();
+        }
+
+        return handValue;
+    }
+
+
+    public boolean isBust() {
+
+        if(getHandValue() > 21){
+            return true;
+        }
+
+        return false;
+    }
 }
