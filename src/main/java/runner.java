@@ -33,11 +33,13 @@ public class runner {
     public static void playerLoop(Game game){
 
         System.out.println("You have");
-
-
         for(Card card : game.getPlayer().returnHand()){
             System.out.println(card.getRank() + " " + card.getSuit());
         }
+
+        Card dealerFaceUpCard =  game.getDealer().returnHand().get(0);
+        System.out.println("Dealer has " + dealerFaceUpCard.getRank() + " " + dealerFaceUpCard.getSuit());
+
 
         String handValueMessage = "Hand value is "  + game.getPlayer().getHandValue();
         System.out.println(handValueMessage);
@@ -70,10 +72,10 @@ public class runner {
 
         System.out.println("Dealer has ");
 
-
         for(Card card : game.getDealer().returnHand()){
             System.out.println(card.getRank() + " " + card.getSuit());
         }
+
 
         if(game.getDealer().isBust()){
             System.out.println("Dealer is bust");
@@ -98,7 +100,7 @@ public class runner {
        if(game.pickWinner() == game.getPlayer()){
            System.out.println("You won, well done");
        }else{
-           System.out.println("Dealer won, you're shite");
+           System.out.println("Dealer won");
        }
     }
 }

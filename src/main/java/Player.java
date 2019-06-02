@@ -31,22 +31,28 @@ public class Player {
         }
 
         if(handValue  > 21){
-            if(returnHand().contains(Rank.ACE)){
+            if(hasAce()){
                 System.out.println("Ace value is counting as 1");
                 handValue -= 10;
             }
         }
-
         return handValue;
+    }
+
+    public boolean hasAce(){
+        for(Card card : hand){
+            if(card.getRank() == Rank.ACE){
+                return true;
+            }
+        }
+        return false;
     }
 
 
     public boolean isBust() {
-
         if(getHandValue() > 21){
             return true;
         }
-
         return false;
     }
 }
