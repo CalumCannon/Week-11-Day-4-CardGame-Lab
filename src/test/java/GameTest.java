@@ -6,11 +6,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class GameTest {
-/*
-Deal two cards to a dealer and a player
-Compare the hands
-Determine the winner from who has the highest value hand
-*/
 
     Deck deck;
     ArrayList<Player> players;
@@ -32,7 +27,7 @@ Determine the winner from who has the highest value hand
     }
 
     @Test
-    public void testDealingToDealerAndPlayer() {
+    public void testBothPlayersHandsHaveTwoCards() {
 
         //Deal cards
         game.dealCards();
@@ -43,7 +38,7 @@ Determine the winner from who has the highest value hand
     @Test
     public void testGamePlayerWin(){
         game.dealCards();
-        game.pickWinner();
+       assertEquals(game.getPlayer(),game.pickWinner());
     }
 
 

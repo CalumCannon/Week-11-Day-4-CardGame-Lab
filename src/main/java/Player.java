@@ -32,7 +32,7 @@ public class Player {
 
         if(handValue  > 21){
             if(hasAce()){
-                System.out.println("Ace value is counting as 1");
+                //System.out.println("Ace value is counting as 1");
                 handValue -= 10;
             }
         }

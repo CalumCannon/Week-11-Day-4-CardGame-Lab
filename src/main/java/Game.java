@@ -39,7 +39,7 @@ public class Game {
         }
 
         //Dealer bust
-        if(getPlayer().getHandValue() >= 22){
+        if(getDealer().getHandValue() >= 22){
             return getPlayer();
         }
 

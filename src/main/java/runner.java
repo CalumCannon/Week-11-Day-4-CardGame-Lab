@@ -18,15 +18,14 @@ public class runner {
 
         Game game = new Game(players, deck);
 
-        System.out.println("Press enter to deal cards");
-        Scanner scanner = new Scanner(System.in);
-
         game.dealCards();
 
         playerLoop(game);
         dealerLoop(game);
 
         compareHands(game);
+        System.out.println("__________________________");
+        main(args);
 
     }
 
@@ -36,11 +35,6 @@ public class runner {
         for(Card card : game.getPlayer().returnHand()){
             System.out.println(card.getRank() + " " + card.getSuit());
         }
-
-        Card dealerFaceUpCard =  game.getDealer().returnHand().get(0);
-        System.out.println("Dealer has " + dealerFaceUpCard.getRank() + " " + dealerFaceUpCard.getSuit());
-
-
         String handValueMessage = "Hand value is "  + game.getPlayer().getHandValue();
         System.out.println(handValueMessage);
 
@@ -48,6 +42,13 @@ public class runner {
             System.out.println("Bust");
             return;
         }
+
+        System.out.println("");
+
+        Card dealerFaceUpCard =  game.getDealer().returnHand().get(0);
+        System.out.println("Dealer has " + dealerFaceUpCard.getRank() + " " + dealerFaceUpCard.getSuit());
+        System.out.println("");
+
 
         System.out.println("Would you like to twist or stick?");
 
@@ -98,9 +99,9 @@ public class runner {
 
     public static void compareHands(Game game){
        if(game.pickWinner() == game.getPlayer()){
-           System.out.println("You won, well done");
+           System.out.println("You win, well done");
        }else{
-           System.out.println("Dealer won");
+           System.out.println("Dealer wins");
        }
     }
 }
